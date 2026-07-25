@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zartanian</title>
+<meta name="description" content="Zartanian — toys, trading cards, apparel, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3ECDD;
+    --paper-2:#EAE0C9;
+    --ink:#241E17;
+    --ink-soft:#5B5142;
+    --rust:#C1401E;
+    --pine:#2F6B47;
+    --foil:#C79A32;
+    --line: rgba(36,30,23,0.14);
+    --card-radius: 14px;
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body{
+    min-height:100svh;
+    display:flex;
+    justify-content:center;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(36,30,23,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:480px;
+    padding:56px 22px 64px;
+  }
+
+  header{
+    text-align:center;
+    margin-bottom:34px;
+  }
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+    padding:5px 12px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.35);
+    margin-bottom:18px;
+  }
+
+  .badge::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--pine);
+    display:inline-block;
+  }
+
+  h1{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:clamp(48px, 14vw, 64px);
+    letter-spacing:.03em;
+    margin:0 0 6px;
+    line-height:.95;
+  }
+
+  .tagline{
+    color:var(--ink-soft);
+    font-size:15px;
+    max-width:34ch;
+    margin:0 auto;
+    line-height:1.5;
+  }
+
+  .stock-strip{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .stock-strip span{
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding:4px 10px;
+    border:1px dashed var(--line);
+    border-radius:999px;
+  }
+
+  .links{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .card-link{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--card-radius);
+    padding:18px 20px;
+    transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+    box-shadow: 0 1px 0 rgba(36,30,23,0.05);
+  }
+
+  .card-link:hover, .card-link:focus-visible{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(36,30,23,0.10);
+    background:#fff;
+    outline:none;
+  }
+
+  .card-link:focus-visible{
+    outline:2px solid var(--pine);
+    outline-offset:2px;
+  }
+
+  .card-link.primary{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .card-link.primary:hover, .card-link.primary:focus-visible{
+    background:#332a1f;
+  }
+  .card-link.primary .rarity{
+    color:var(--foil);
+    border-color:rgba(199,154,50,0.5);
+  }
+  .card-link.primary .link-sub{
+    color:rgba(243,236,221,0.65);
+  }
+
+  .link-main{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+
+  .link-title{
+    font-weight:700;
+    font-size:16px;
+  }
+
+  .link-sub{
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  .rarity{
+    flex-shrink:0;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:4px 9px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+
+  .rarity.common{ color:var(--pine); border-color:rgba(47,107,71,0.35); }
+  .rarity.rare{ color:var(--rust); border-color:rgba(193,64,30,0.35); }
+
+  footer{
+    margin-top:44px;
+    text-align:center;
+  }
+
+  .contact{
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .contact a{
+    color:var(--ink);
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+    text-underline-offset:3px;
+  }
+
+  .fineprint{
+    margin-top:10px;
+    font-size:11px;
+    color:var(--ink-soft);
+    opacity:.7;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card-link{ transition:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Now Restocking</div>
+      <h1>ZARTANIAN</h1>
+      <p class="tagline">An online store selling toys, trading cards, apparel, and more.</p>
+      <div class="stock-strip">
+        <span>Toys</span>
+        <span>Trading Cards</span>
+        <span>Apparel</span>
+        <span>Footwear</span>
+      </div>
+    </header>
+
+    <main class="links">
+      <a class="card-link primary" href="https://www.ebay.com/usr/zartanian" target="_blank" rel="noopener">
+        <span class="link-main">
+          <span class="link-title">Shop on eBay</span>
+          <span class="link-sub">Browse current listings</span>
+        </span>
+        <span class="rarity">Storefront</span>
+      </a>
+
+      <a class="card-link" href="terms.html">
+        <span class="link-main">
+          <span class="link-title">Terms of Service</span>
+          <span class="link-sub">The rules for using this site</span>
+        </span>
+        <span class="rarity common">Common</span>
+      </a>
+
+      <a class="card-link" href="privacy.html">
+        <span class="link-main">
+          <span class="link-title">Privacy Policy</span>
+          <span class="link-sub">How we handle your information</span>
+        </span>
+        <span class="rarity common">Common</span>
+      </a>
+
+      <a class="card-link" href="mailto:zartaniagroup@gmail.com">
+        <span class="link-main">
+          <span class="link-title">Contact</span>
+          <span class="link-sub">zartaniagroup@gmail.com</span>
+        </span>
+        <span class="rarity rare">Direct</span>
+      </a>
+    </main>
+
+    <footer>
+      <p class="contact">Questions? Email <a href="mailto:zartaniagroup@gmail.com">zartaniagroup@gmail.com</a></p>
+      <p class="fineprint">&copy; <span id="year"></span> Zartanian. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
